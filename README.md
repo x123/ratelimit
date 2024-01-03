@@ -1,6 +1,6 @@
 # Ratelimit
 
-**TODO: Add description**
+**A simple Elixir rate limiter**
 
 ## Installation
 
