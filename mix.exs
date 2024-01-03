@@ -4,8 +4,8 @@ defmodule RateLimit.MixProject do
   def project do
     [
       app: :ratelimit,
-      version: "0.1.1",
-      elixir: "~> 1.16",
+      version: "0.1.2",
+      elixir: "~> 1.15",
       start_permanent: Mix.env() == :prod,
       deps: deps()
     ]
