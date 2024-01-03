@@ -10,12 +10,12 @@ defmodule RateLimit.Application do
     children = [
       # Starts a worker by calling: Sequencesup.Worker.start_link(arg)
       {Registry, [keys: :unique, name: Application.get_env(:ratelimit, :tokenbucket_registry)]},
-
+      {RateLimit, []}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
-    opts = [strategy: :one_for_all, name: Sequencesup.Supervisor]
+    opts = [strategy: :one_for_all, name: RateLimit.Supervisor]
     Supervisor.start_link(children, opts)
   end
 end

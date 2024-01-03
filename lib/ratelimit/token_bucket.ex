@@ -40,6 +40,7 @@ defmodule RateLimit.TokenBucket do
         via_tuple(name),
         fn state -> Map.update(state, :tokens, 0, fn existing -> existing - num_tokens end) end
       )
+
       {:ok, get(name)}
     else
       {:error, "not enough tokens, wait"}
@@ -85,5 +86,5 @@ defmodule RateLimit.TokenBucket do
     end)
   end
 
-	# TODO: make an add_tokens(name, num_tokens)
+  # TODO: make an add_tokens(name, num_tokens)
 end
