@@ -1,7 +1,7 @@
 defmodule RateLimit do
   use Agent
 
-  def start_link(name, rate, max_tokens) do
+  def start_link({name, rate, max_tokens}) do
     Agent.start_link(fn -> initialize(rate, max_tokens) end, name: via_tuple(name))
   end
 
