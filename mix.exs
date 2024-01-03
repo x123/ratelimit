@@ -1,4 +1,4 @@
-defmodule Ratelimit.MixProject do
+defmodule RateLimit.MixProject do
   use Mix.Project
 
   def project do

@@ -1,4 +1,4 @@
-# Ratelimit
+# RateLimit
 
 **A simple Elixir rate limiter**
 
