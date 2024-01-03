@@ -1,4 +1,4 @@
-defmodule RateLimit.TokenBucket do
+defmodule RateLimit do
   use Agent
 
   def start_link(name, rate, max_tokens) do
@@ -6,7 +6,7 @@ defmodule RateLimit.TokenBucket do
   end
 
   defp via_tuple(name) do
-    {:via, Registry, {Application.get_env(:ratelimit, :tokenbucket_registry), name}}
+    {:via, Registry, {Application.get_env(:ratelimit, :registry_name), name}}
   end
 
   defp initialize(rate, max_tokens) do
@@ -20,8 +20,12 @@ defmodule RateLimit.TokenBucket do
     }
   end
 
+  def add(name, rate, max_tokens) do
+    Agent.start_link(fn -> initialize(rate, max_tokens) end, name: via_tuple(name))
+  end
+
   def get(name) do
-    RateLimit.TokenBucket.update(name)
+    __MODULE__.update(name)
     Agent.get(via_tuple(name), & &1)
   end
 
