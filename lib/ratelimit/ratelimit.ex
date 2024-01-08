@@ -64,11 +64,11 @@ defmodule RateLimit do
       max_tokens = Map.get(state, :max_tokens)
 
       since_last_updated =
-        Time.diff(
+        DateTime.diff(
           DateTime.utc_now(),
           Map.get(state, :last_updated),
           :microsecond
-        ) |> abs()
+        )
 
       state =
         Map.update(
