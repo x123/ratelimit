@@ -68,7 +68,7 @@ defmodule RateLimit do
           DateTime.utc_now(),
           Map.get(state, :last_updated),
           :microsecond
-        )
+        ) |> abs()
 
       state =
         Map.update(
